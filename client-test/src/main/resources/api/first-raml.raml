@@ -1,0 +1,79 @@
+#%RAML 1.0
+title: First-Raml
+traits:
+  Client_required:
+    headers:
+      client_id:
+        type: string
+        required: true
+      client-secrat:
+        type: string
+        required: false
+/productitem:
+  get:
+    is:
+      - Client_required 
+    description: getting db details from oracle db
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include productresponse.json
+  post:
+    is:
+      - Client_required 
+    description: inserting data into database/file/salesforce
+    body:
+      application/json:
+        example: !include postrequest.json
+          
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include postresponse.json
+              
+  put:
+    is:
+      - Client_required
+    description: inserting data into database/file/salesforce
+    body:
+      application/json:
+        example: !include putrequest.json
+          
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include putreponse.json
+              
+  delete:
+    is:
+      - Client_required
+    description: inserting data into database/file/salesforce
+    body:
+      application/json:
+        example: !include deleterequest.json
+          
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include deleteresponse.json
+              
+/customeritem:
+  get:
+    is:
+      - Client_required
+    description: fetching customer details
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include customer.json
+
+
+                            
+            
+                                                            
+                                    
